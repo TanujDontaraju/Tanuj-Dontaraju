@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tanuj</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#home">Tanuj</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#connect">Connect with me</a></li>
+      <li><a href="#resume">Resume</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <h1>I'm Tanuj!</h1>
+    <h2><span class="rotating-words">Coder</span></h2>
+    <div class="splash-shape"></div>
+  </section>
+
+  <footer>
+    &copy; 2025 Amelia Morgan. All rights reserved.
+  </footer>
+
+  <script>
+    const words = ["Coders", "Innovator", "Winner"];
+    let index = 0;
+    const rotatingSpan = document.querySelector(".rotating-words");
+
+    setInterval(() => {
+      index = (index + 1) % words.length;
+      rotatingSpan.textContent = words[index];
+    }, 3000);
+  </script>
+</body>
+</html>
+
+MAKE IM TANUJ BIGGER AND ALSO MAKE THE ROTATING THING BETTER
