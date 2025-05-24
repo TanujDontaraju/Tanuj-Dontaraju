@@ -12,7 +12,7 @@
     <ul>
       <li><a href="#home">Tanuj</a></li>
       <li><a href="#work">Work</a></li>
-      <li><a href="#connect">Connect with me</a></li>
+      <li><a href="#connect">Contact Me</a></li>
       <li><a href="#resume">Resume</a></li>
     </ul>
   </nav>
@@ -24,20 +24,23 @@
   </section>
 
   <footer>
-    &copy; 2025 Amelia Morgan. All rights reserved.
+    &copy; 2025 Tanuj Dontaraju. All rights reserved.
   </footer>
 
   <script>
-    const words = ["Coders", "Innovator", "Winner"];
+    const words = ["Coder", "Innovator", "Winner"];
     let index = 0;
     const rotatingSpan = document.querySelector(".rotating-words");
 
     setInterval(() => {
-      index = (index + 1) % words.length;
-      rotatingSpan.textContent = words[index];
+      rotatingSpan.classList.add("fade-out");
+
+      setTimeout(() => {
+        index = (index + 1) % words.length;
+        rotatingSpan.textContent = words[index];
+        rotatingSpan.classList.remove("fade-out");
+      }, 500); // Should match CSS transition
     }, 3000);
   </script>
 </body>
 </html>
-
-MAKE IM TANUJ BIGGER AND ALSO MAKE THE ROTATING THING BETTER
