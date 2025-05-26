@@ -1,3 +1,6 @@
 My personal portfolio website
 
 Created on VS Code
+
+
+FOR ME - DOWNLOAD FROM GITHUB EVERYTIME YOU CHANGE FROM MAC TO WINDWOS OR WINDOWS TO MAC
