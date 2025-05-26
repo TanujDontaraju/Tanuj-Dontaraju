@@ -1,6 +1,11 @@
 /* Reset and base styles */
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Orbitron', sans-serif;
   background: radial-gradient(circle at top right, #001f3f, #000);
   color: #fff;
@@ -16,12 +21,11 @@ body {
   top: 20px;
   left: 20px;
   z-index: 10;
+  background: transparent;
 }
 
 .main-nav ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   gap: 15px;
 }
@@ -32,28 +36,58 @@ body {
   font-weight: bold;
   font-size: 1.1rem;
   text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: inline-block;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #00ffe7;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a:focus::after {
+  transform: scaleX(1);
 }
 
 .main-nav a:hover,
 .main-nav a:focus {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #00ffe7;
+  color: #00ffe7;
   outline: none;
+}
+
+
+.nav-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #00ffe7;
+  cursor: pointer;
+  padding: 0;
 }
 
 /* Hero section */
 .hero {
-  position: relative;
   flex: 1 0 auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  gap: 80px;
   height: 100vh;
+  padding: 80px 60px 60px;
+  position: relative;
   overflow: hidden;
+  text-align: left;
 }
 
 .hero::before {
@@ -74,39 +108,87 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-.hero h1 {
-  font-size: 6rem;
-  margin-bottom: 0.3em;
-  color: #00ffe7;
+.hero-left {
+  flex: 1;
+  max-width: 450px;
+  margin-right: 20px;
 }
 
-.hero h2 {
-  font-size: 3rem;
-  margin-bottom: 1.5em;
+.signature {
+  font-family: 'Dancing Script', cursive;
+  font-size: 10rem;
+  color: #00ffe7;
+  line-height: 1.1;
+  white-space: normal;
+  margin-left: -60px;
+  user-select: none;
+  text-align: left;
+}
+
+.hero-right {
+  flex: 1;
+  max-width: 450px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-right h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #fff;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .rotating-words {
+  position: relative;
+  display: inline;
+  height: 1.6em;
+  overflow: visible;
+  vertical-align: baseline;
+  font-weight: bold;
   color: #00ffe7;
-  font-size: 3rem;
-  display: inline-block;
-  min-width: 200px;
-  text-align: center;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+  line-height: 1.6em;
 }
 
-.rotating-words.fade-out {
-  opacity: 0;
-}
-
-.splash-shape {
+.rotating-words .word {
   position: absolute;
-  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 80px;
-  background: linear-gradient(to right, #00ffe7, transparent);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 60%);
+  top: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  white-space: nowrap;
+}
+
+.rotating-words .word.active {
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+}
+
+.hero-right p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.cta-button {
+  padding: 10px 20px;
+  border: 2px solid #00ffe7;
+  border-radius: 8px;
+  color: #00ffe7;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s;
+  align-self: flex-start;
+}
+
+.cta-button:hover {
+  background-color: #00ffe7;
+  color: #000;
 }
 
 /* Footer */
@@ -115,6 +197,120 @@ footer {
   text-align: center;
   padding: 30px;
   background: linear-gradient(90deg, #001f3f, #002a5c);
-  color: #aaa;
+  color: #fff;
   font-size: 0.9rem;
+}
+
+/* Social icons top right */
+.social-icons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 24px; /* increased spacing */
+  z-index: 15;
+}
+
+.social-icons a {
+  display: inline-block;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.social-icons a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 100%;
+  background-color: #00ffe7;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover::after,
+.social-icons a:focus::after {
+  transform: scaleX(1);
+}
+
+.social-icons a img {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1);
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .main-nav ul {
+    display: none;
+    flex-direction: column;
+    background: #001f3f;
+    position: absolute;
+    left: 0;
+    top: 60px;
+    border-radius: 8px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    min-width: 180px;
+    z-index: 20;
+  }
+
+  .main-nav ul.nav-open {
+    display: flex;
+  }
+
+  .main-nav li {
+    margin-bottom: 10px;
+  }
+
+  .main-nav li:last-child {
+    margin-bottom: 0;
+  }
+
+  .main-nav a {
+    padding: 8px 0;
+    font-size: 1.1rem;
+  }
+
+  .hero {
+    flex-direction: column;
+    padding: 100px 30px 40px;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .signature {
+    font-size: 6rem;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .hero-right {
+    margin-left: 0;
+  }
+
+  .hero-right h2 {
+    white-space: normal;
+    font-size: 2rem;
+  }
+
+  .rotating-words {
+    height: auto;
+    display: inline;
+  }
+
+  .hero-right p {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    align-self: center;
+  }
 }
