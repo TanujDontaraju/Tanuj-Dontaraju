@@ -245,15 +245,20 @@ footer {
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 20;
   }
 
+  /* Move nav menu dropdown to the right, below GitHub icon */
   .main-nav ul {
     display: none;
     flex-direction: column;
     background: #001f3f;
-    position: absolute;
-    left: 0;
-    top: 60px;
+    position: fixed;
+    top: 70px; /* a bit below top */
+    right: 20px; /* aligned with social icons */
     border-radius: 8px;
     padding: 10px 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
@@ -276,6 +281,7 @@ footer {
   .main-nav a {
     padding: 8px 0;
     font-size: 1.1rem;
+    white-space: nowrap;
   }
 
   .hero {
@@ -313,7 +319,3 @@ footer {
     align-self: center;
   }
 }
-
-  .cta-button {
-    align-self: center;
-  }
