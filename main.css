@@ -104,7 +104,7 @@ body::before {
   align-items: center;
   justify-content: center;
   gap: 80px;
-  min-height: 100vh; /* changed from height to min-height */
+  min-height: 100vh;
   padding: 80px 60px 60px;
   position: relative;
   text-align: left;
@@ -134,15 +134,15 @@ body::before {
   margin-left: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;       /* center horizontally */
+  align-items: center;
   justify-content: center;
-  text-align: center;        /* center text */
-  gap: 20px;                 /* spacing between heading and button */
+  text-align: center;
+  gap: 20px;
 }
 
 .hero-right h2 {
   font-size: 3.5rem;
-  margin-bottom: 0;          /* remove bottom margin */
+  margin-bottom: 0;
   color: #fff;
   line-height: 1.2;
   white-space: nowrap;
@@ -189,7 +189,7 @@ body::before {
   text-decoration: none;
   font-weight: bold;
   transition: background 0.3s, color 0.3s;
-  align-self: center;        /* center the button */
+  align-self: center;
   margin-top: 0;
 }
 
@@ -217,22 +217,21 @@ section {
   font-size: 3rem;
   color: #00ffe7;
   position: relative;
-  display: inline-block;   /* key for width to shrink-wrap text */
+  display: inline-block;
   margin-bottom: 20px;
-  padding-bottom: 8px;     /* space for underline */
+  padding-bottom: 8px;
 }
 
 .about-me h1::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: -50px;             /* extend 15px left */
-  width: calc(100% + 100px); /* extend 15px left + 15px right */
+  left: -50px;
+  width: calc(100% + 100px);
   height: 3px;
   background-color: #00ffe7;
   border-radius: 2px;
 }
-
 
 /* Footer */
 footer {
@@ -285,13 +284,13 @@ footer {
   display: block;
 }
 
-/* Responsive */
+/* Responsive for tablets and smaller */
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
     position: fixed;
     top: 20px;
-    left: 20px;
+    right: 20px; /* Moved toggle button to the right */
     z-index: 20;
   }
 
@@ -307,6 +306,8 @@ footer {
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     min-width: 180px;
     z-index: 20;
+    max-height: 60vh;
+    overflow-y: auto;
   }
 
   .main-nav ul.nav-open {
@@ -369,5 +370,91 @@ footer {
 
   section {
     margin: 30px 20px;
+  }
+
+  /* Hide social icons on smaller screens */
+  .social-icons {
+    display: none;
+  }
+}
+
+/* Very small screens below 400px */
+@media (max-width: 399px) {
+  /* Reduce spacing between elements */
+  .hero {
+    gap: 20px !important;
+    padding: 60px 20px 30px !important;
+  }
+
+  .hero-right {
+    gap: 10px !important;
+  }
+
+  /* Hide original h2 text but keep layout */
+  .hero-right h2 {
+    font-size: 1.8rem !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+    text-align: center !important;
+    font-weight: normal !important;
+    position: relative;
+    color: transparent !important; /* hide original text */
+  }
+
+  /* Show "I am a" on its own line above rotating words */
+  .hero-right h2::before {
+    content: "I am a";
+    display: block;
+    margin-bottom: 0.15em;
+    color: #fff;
+    font-weight: normal;
+    position: relative;
+  }
+
+  /* Keep rotating words container visible and block-level */
+  .rotating-words {
+    display: inline-block !important;
+    margin: 0 auto !important;
+    font-weight: bold !important;
+    color: #00ffe7 !important;
+    white-space: nowrap !important;
+    position: relative;
+    height: 1.6em; /* keep fixed height for smooth animation */
+    overflow: visible;
+  }
+
+  /* DO NOT force all words visible here! Let JS handle opacity & positioning */
+  .rotating-words .word {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    white-space: nowrap;
+  }
+
+  /* The active word gets visible by JS */
+  .rotating-words .word.active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+  }
+
+  .cta-button {
+    padding: 8px 16px !important;
+    font-size: 1rem !important;
+  }
+
+  .about-me {
+    padding: 20px 15px !important;
+    font-size: 1rem !important;
+  }
+
+  /* Smaller and centered signature */
+  .signature {
+    font-size: 4.5rem !important;
+    text-align: center !important;
+    margin-left: 0 !important;
   }
 }
