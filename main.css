@@ -354,3 +354,139 @@ footer {
   filter: brightness(0) invert(1);
   display: block;
 }
+
+/* Custom Footer Integration */
+.custom-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 60px 40px;
+  background: linear-gradient(90deg, #001f3f, #002a5c);
+  color: #fff;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-left {
+  flex: 1;
+  max-width: 300px;
+}
+
+.footer-logo {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #00ffe7;
+  margin-bottom: 20px;
+  line-height: 1.1;
+
+  /* Outer glow around entire text shape */
+  filter:
+    drop-shadow(0 0 0.5px #00ffe7)
+    drop-shadow(0 0 0.5px #00ffe7)
+    drop-shadow(0 0 3px #00ffe7);
+}
+
+.footer-left p {
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.footer-center,
+.footer-right {
+  flex: 1;
+  max-width: 200px;
+  margin-top: 20px;
+  color: #fff;
+}
+
+.footer-center h3,
+.footer-right h3 {
+  font-size: 1.6rem; /* Increased from 1.2rem */
+  margin-bottom: 15px;
+  color: #00ffe7;
+}
+
+.footer-center ul,
+.footer-right ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-center li,
+.footer-right li {
+  margin-bottom: 12px;
+  font-size: 1.1rem; /* Increased font size */
+}
+
+.footer-center a,
+.footer-right a {
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s ease;
+  font-size: 1.1rem; /* Increased font size */
+}
+
+/* Animated underline effect */
+.footer-center a::after,
+.footer-right a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  width: 0;
+  background-color: #00ffe7;
+  transition: width 0.3s ease;
+}
+
+.footer-center a:hover::after,
+.footer-right a:hover::after {
+  width: 100%;
+}
+
+.footer-center a:hover,
+.footer-right a:hover {
+  color: #00ffe7;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #00ffe7;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 14px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.back-to-top:hover {
+  background: #00ccdd;
+  color: #000;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .custom-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-center,
+  .footer-right {
+    margin-top: 30px;
+  }
+
+  .back-to-top {
+    position: static;
+    margin-top: 30px;
+  }
+}
