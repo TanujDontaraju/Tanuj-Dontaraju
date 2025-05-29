@@ -514,19 +514,27 @@ footer {
 }
 
 .project-card {
-  background: transparent;
-  border: 2px solid #00ffe7;
-  border-radius: 12px;
-  padding: 25px 20px;
-  width: 300px;
-  color: #00ffe7;
-  font-size: 1.1rem;
-  box-shadow: none;
-  transition: background-color 0.3s ease, box-shadow 0.4s ease;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  background: #DCDCDC!important;
+  color: #000 !important;           /* changed to black */
+  border: 2px solid #ccc !important;
+  box-shadow: 0 0 8px rgba(128, 128, 128, 0.3) !important;
+  transition: none !important;
+  cursor: default !important;
+  transform: none !important;
+}
+
+.project-card * {
+  color: #000 !important;  /* ensure all child text is black */
+}
+
+.project-card:hover,
+.project-card:focus,
+.project-card:active {
+  background: #D3D3D3 !important;
+  color: #000 !important;           /* changed to black */
+  border: 2px solid #ccc !important;
+  box-shadow: 0 0 8px rgba(128, 128, 128, 0.3) !important;
+  transform: none !important;
 }
 
 .project-card h3 {
@@ -557,26 +565,35 @@ footer {
   border-color: #00ffe7;
 }
 
-.project-card:hover {
-  background-color: #00ffe7;
-  color: #000;
-  box-shadow: 0 0 20px #00ffe7;
-}
-
-.project-card:hover p,
-.project-card:hover h3 {
-  color: #000;
-}
-
-.project-card:hover .project-link {
-  color: #000;
-  border-color: transparent;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
   .projects-container {
     flex-direction: column;
     align-items: center;
   }
+}
+
+.projects-container {
+  display: flex;
+  flex-wrap: nowrap;      /* Keep all cards in one row */
+  gap: 200px;              /* Space between cards */
+  justify-content: center; /* Center the whole row */
+  padding: 0 20px;         /* Optional padding on sides */
+}
+
+.project-card {
+  width: 30%;             /* Much wider boxes */
+  min-width: 450px;       /* Prevent boxes from getting too narrow */
+  height: 650px;
+  background: transparent;
+  border: 2px solid #00ffe7;
+  border-radius: 12px;
+  padding: 30px 25px;
+  color: #00ffe7;
+  font-size: 1.1rem;
+  box-shadow: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
