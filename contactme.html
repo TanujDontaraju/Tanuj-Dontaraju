@@ -11,7 +11,7 @@
   <nav class="main-nav">
     <button class="nav-toggle" aria-label="Toggle navigation menu">&#9776;</button>
     <ul>
-      <li><a href="home.html" aria-label="Home">Me</a></li>
+      <li><a href="home.html">Me</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="Tanuj_Dontaraju_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
       <li><a href="contactme.html">Contact Me !</a></li>
@@ -19,38 +19,37 @@
   </nav>
 
   <div class="social-icons">
-    <a href="https://instagram.com/tanujdontaraju" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+    <a href="https://instagram.com/tanujdontaraju" target="_blank" aria-label="Instagram">
       <span class="icon-link"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" /></span>
     </a>
     <a href="mailto:tanujdontaraju@gmail.com" aria-label="Email">
-        <span class="icon-link">
-            <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" />
-        </span>
+      <span class="icon-link"><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" /></span>
     </a>
-    <a href="https://github.com/tanujdontaraju" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+    <a href="https://github.com/tanujdontaraju" target="_blank" aria-label="GitHub">
       <span class="icon-link"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" /></span>
     </a>
   </div>
 
   <section class="contact-section">
     <h1>Contact Me</h1>
-    <p>If you'd like to reach out to me for opportunities, collaborations, or just to say hi, feel free to use the form below or reach out through email or any platform I use!</p>
-    
-    <form action="mailto:tanujdontaraju@gmail.com" method="POST" enctype="text/plain" class="contact-form">
-      <label for="name">Your Name</label>
-      <input type="text" id="name" name="name" required />
+    <p>Let’s connect! Use the form to send a message or say hello.</p>
 
-      <label for="email">Your Email</label>
-      <input type="email" id="email" name="email" required />
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-
-      <button type="submit">Send</button>
+    <form id="contact-form" class="contact-form unique">
+      <div class="form-group">
+        <input type="text" id="name" name="name" required />
+        <label for="name">Your Name</label>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" name="email" required />
+        <label for="email">Your Email</label>
+      </div>
+      <div class="form-group">
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <label for="message">Your Message</label>
+      </div>
+      <button type="submit">Send Message 🚀</button>
     </form>
   </section>
-
-  <br><br><br><br><br>
 
   <footer class="custom-footer">
     <div class="footer-left">
@@ -71,14 +70,37 @@
     <div class="footer-right">
       <h3>Contact</h3>
       <ul>
-        <li><a href="https://instagram.com/tanujdontaraju" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-        <li><a href="https://github.com/tanujdontaraju" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-        <li><a href="mailto:tanujdontaraju@gmail.com" target="_blank" rel="noopener noreferrer">Email</a></li>
+        <li><a href="https://instagram.com/tanujdontaraju" target="_blank">Instagram</a></li>
+        <li><a href="https://github.com/tanujdontaraju" target="_blank">GitHub</a></li>
+        <li><a href="mailto:tanujdontaraju@gmail.com" target="_blank">Email</a></li>
       </ul>
     </div>
 
     <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
   </footer>
+
+  <!-- EmailJS SDK and init -->
+  <script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS user/public key
+    })();
+  </script>
+
+  <!-- Form submit handler -->
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+        .then(() => {
+          alert('Message sent successfully! 🎉');
+          this.reset();
+        }, (error) => {
+          alert('Oops... Something went wrong.', error);
+        });
+    });
+  </script>
 
   <script>
     const navToggle = document.querySelector('.nav-toggle');
